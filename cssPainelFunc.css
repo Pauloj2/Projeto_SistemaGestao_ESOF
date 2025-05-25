@@ -1,0 +1,133 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+}
+.menu-lateral {
+    width: 240px;
+    height: 100vh;
+    background-color: #154734; /* Verde escuro */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 0px 8px 8px 0px;
+}
+  
+.menu-lateral .logo {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.menu-lateral a {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+}
+  
+.menu-lateral ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+  
+.menu-lateral ul li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    cursor: pointer;
+    transition: background 0.2s;
+    border-radius: 8px;
+    list-style: none;
+}
+  
+.menu-lateral ul li:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+  
+.menu-lateral ul li.active {
+    background-color: #DFF5EA;
+    color: #154734;
+    font-weight: bold;
+}
+  
+.menu-lateral ul li i {
+    font-size: 18px;
+}
+
+header {
+    position: relative;
+    height: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 0 20px;
+    box-shadow: 0 4px 10px rgba(21, 71, 52, 0.4);
+}
+
+.opcoes {
+    position: relative;
+}
+
+.btnMenu {
+    background-color: #154734;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    z-index: 2;
+    position: relative;
+}
+
+/* Quando o mouse está sobre .opcoes (menu e botão), estilize o botão */
+.opcoes:hover .btnMenu {
+    background-color: #f0f0f0;
+    color: #1ED760;
+}
+
+/* Menu suspenso */
+.opcoes-menu {
+    position: absolute;
+    top: 45px;
+    right: 0;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    display: none;
+    padding: 0;
+    margin: 0;
+    width: 150px;
+    z-index: 1;
+}
+
+/* Mostrar menu */
+.opcoes:hover .opcoes-menu {
+    display: block;
+}
+
+/* Itens do menu */
+.opcoes-menu a {
+    display: block;
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+/* Hover em cada item */
+.opcoes-menu a:hover {
+    background-color: #f0f0f0;
+    color: #1ED760;
+}
