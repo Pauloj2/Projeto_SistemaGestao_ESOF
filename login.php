@@ -1,6 +1,18 @@
-<?php 
+<?php
 session_start();
 include('conexao.php');
+
+// Cancelar orçamentos com mais de 5 dias aguardando
+$query_cancelar = "
+    UPDATE orcamentos 
+    SET status = 'Cancelado' 
+    WHERE status = 'Aguardando' 
+    AND data_geracao <= DATE_SUB(CURDATE(), INTERVAL 5 DAY)
+";
+mysqli_query($conexao, $query_cancelar);
+
+
+
 
 if (!isset($_POST['usuario']) || !isset($_POST['senha'])) {
     header('Location: index.php');
@@ -29,6 +41,7 @@ if ($row > 0) {
     $_SESSION['usuario'] = $usuario;
     $_SESSION['nome_usuario'] = $dado["nome"];
     $_SESSION['cargo_usuario'] = $dado["cargo"];
+    $_SESSION['id_usuario'] = $dado["id"];
 
     if ($_SESSION['cargo_usuario'] == 'Administrador' || $_SESSION['cargo_usuario'] == 'Gerente') {
         header('Location: painel_admin.php');
@@ -43,4 +56,3 @@ if ($row > 0) {
     header('Location: index.php');
     exit();
 }
-?>

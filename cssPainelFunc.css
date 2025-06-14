@@ -1,20 +1,25 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
+    background-color: #f8f9fa;
 }
+
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
 .menu-lateral {
     width: 240px;
-    height: 100vh;
-    background-color: #154734; /* Verde escuro */
+    background-color: #154734;
     color: white;
     display: flex;
     flex-direction: column;
     padding: 20px;
     box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 0px 8px 8px 0px;
+    border-radius: 0 8px 8px 0;
 }
-  
+
 .menu-lateral .logo {
     font-size: 28px;
     font-weight: bold;
@@ -31,13 +36,13 @@ body {
     width: 100%;
     height: 100%;
 }
-  
+
 .menu-lateral ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
-  
+
 .menu-lateral ul li {
     display: flex;
     align-items: center;
@@ -46,19 +51,18 @@ body {
     cursor: pointer;
     transition: background 0.2s;
     border-radius: 8px;
-    list-style: none;
 }
-  
+
 .menu-lateral ul li:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
-  
+
 .menu-lateral ul li.active {
     background-color: #DFF5EA;
     color: #154734;
     font-weight: bold;
 }
-  
+
 .menu-lateral ul li i {
     font-size: 18px;
 }
@@ -69,9 +73,10 @@ header {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between; 
+    justify-content: space-between;
     padding: 0 20px;
     box-shadow: 0 4px 10px rgba(21, 71, 52, 0.4);
+    background-color: #fff;
 }
 
 .opcoes {
@@ -91,13 +96,11 @@ header {
     position: relative;
 }
 
-/* Quando o mouse está sobre .opcoes (menu e botão), estilize o botão */
 .opcoes:hover .btnMenu {
     background-color: #f0f0f0;
     color: #1ED760;
 }
 
-/* Menu suspenso */
 .opcoes-menu {
     position: absolute;
     top: 45px;
@@ -112,12 +115,10 @@ header {
     z-index: 1;
 }
 
-/* Mostrar menu */
 .opcoes:hover .opcoes-menu {
     display: block;
 }
 
-/* Itens do menu */
 .opcoes-menu a {
     display: block;
     padding: 10px;
@@ -126,8 +127,37 @@ header {
     border-radius: 8px;
 }
 
-/* Hover em cada item */
 .opcoes-menu a:hover {
     background-color: #f0f0f0;
     color: #1ED760;
+}
+
+/* Adaptado para cards */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    justify-content: flex-end; /* Alinha os cards à direita, ao lado do menu lateral */
+    align-items: center; /* Centraliza verticalmente */
+    background-color: #eaeaea; /* Opcional, para visualização */
+}
+
+.cards {
+    display: flex;
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    width: 180px;
+    height: 180px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: 600;
+    color: #154734;
 }

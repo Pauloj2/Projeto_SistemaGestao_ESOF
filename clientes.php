@@ -2,7 +2,7 @@
 // Conectamos ao banco de dados onde os clientes são salvos
 include('conexao.php');
 
-// 👉 CADASTRAR CLIENTE
+//  CADASTRAR CLIENTE
 if (isset($_POST['button'])) { // Se o botão de salvar foi apertado
     $nome = $_POST['txtnome']; // Pegamos o nome digitado
     $telefone = $_POST['txttelefone']; // Pegamos o telefone digitado
@@ -30,7 +30,7 @@ if (isset($_POST['button'])) { // Se o botão de salvar foi apertado
     }
 }
 
-// 🗑️ EXCLUIR CLIENTE
+//  EXCLUIR CLIENTE
 if (isset($_GET['func']) && $_GET['func'] == 'deleta') { // Se o usuário clicou em excluir
     $id = $_GET['id']; // Pegamos o ID do cliente
     mysqli_query($conexao, "DELETE FROM clientes WHERE id = '$id'"); // Apagamos do banco
