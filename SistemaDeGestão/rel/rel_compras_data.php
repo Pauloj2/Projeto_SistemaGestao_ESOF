@@ -5,7 +5,7 @@ $dataFinal = $_GET['dataFinal'] ?? date('Y-m-d');
 $dataIni = implode('/', array_reverse(explode('-', $dataInicial)));
 $dataFin = implode('/', array_reverse(explode('-', $dataFinal)));
 
-include('../conexao.php');
+include('../config/conexao.php');
 ?>
 
 <style>

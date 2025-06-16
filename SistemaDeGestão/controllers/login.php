@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('conexao.php');
+include('../config/conexao.php');
 
 // Cancelar orçamentos com mais de 5 dias aguardando
 $query_cancelar = "
@@ -25,7 +25,7 @@ $senha = trim($_POST['senha']);
 
 if (empty($usuario) || empty($senha)) {
     $_SESSION['login_erro'] = true;
-    header('Location: index.php');
+    header('Location: ../index.php');
     exit();
 }
 
@@ -44,11 +44,11 @@ if ($row > 0) {
     $_SESSION['id_usuario'] = $dado["id"];
 
     if ($_SESSION['cargo_usuario'] == 'Administrador' || $_SESSION['cargo_usuario'] == 'Gerente') {
-        header('Location: painel_admin.php');
+        header('Location: ../views/painel_admin.php');
     } elseif ($_SESSION['cargo_usuario'] == 'Tesoureiro') {
-        header('Location: painel_tesouraria.php');
+        header('Location: ../views/painel_tesouraria.php');
     } elseif ($_SESSION['cargo_usuario'] == 'Funcionario') {
-        header('Location: painel_funcionario.php');
+        header('Location: ../views/painel_funcionario.php');
     }
     exit();
 } else {

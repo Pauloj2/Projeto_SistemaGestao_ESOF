@@ -1,9 +1,9 @@
 <?php
 session_start();
-include('verificar_login.php');
-include('conexao.php');
+include('../controllers/verificar_login.php');
+include('../config/conexao.php');
 
-if ($_SESSION['cargo_usuario'] != 'Administrador' && $_SESSION['cargo_usuario'] != 'Gerente') {
+if ($_SESSION['cargo_usuario'] != 'Administrador' && $_SESSION['cargo_usuario'] != 'Gerente' && $_SESSION['cargo_usuario'] != 'Tesoureiro') {
   header('Location: index.php');
   exit();
 }
@@ -18,13 +18,13 @@ if ($_SESSION['cargo_usuario'] != 'Administrador' && $_SESSION['cargo_usuario'] 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-  <title>Painel Admin - EletroService</title>
+  <title>Painel Financeiro - EletroService</title>
 
   <style>
     :root {
       --primary-color: #1ED760;
       --dark-bg: #2c3e50;
-      --sidebar-bg: #043d2f;
+      --sidebar-bg : #043d2f;
     }
 
     .sidebar {
@@ -46,8 +46,6 @@ if ($_SESSION['cargo_usuario'] != 'Administrador' && $_SESSION['cargo_usuario'] 
       padding: 0.75rem 1.5rem;
       border-radius: 0;
       transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
     }
 
     .sidebar .nav-link:hover {
@@ -84,7 +82,6 @@ if ($_SESSION['cargo_usuario'] != 'Administrador' && $_SESSION['cargo_usuario'] 
         left: -100%;
         z-index: 1050;
         transition: left 0.3s ease;
-        width: 250px;
       }
 
       .sidebar.show {
@@ -116,41 +113,25 @@ if ($_SESSION['cargo_usuario'] != 'Administrador' && $_SESSION['cargo_usuario'] 
           </div>
 
           <nav class="nav flex-column">
-            <a class="nav-link" href="funcionarios.php">
-              <i class="bi bi-person-badge"></i>
-              Funcionários
+            <a class="nav-link" href="../controllers/movimentacoes.php">
+              <i class="bi bi-arrow-left-right"></i>
+              Movimentações
             </a>
-            <a class="nav-link" href="usuarios.php">
-              <i class="bi bi-people"></i>
-              Usuários
+            <a class="nav-link" href="../controllers/gastos.php">
+              <i class="bi bi-cash-stack"></i>
+              Gastos
             </a>
-            <a class="nav-link" href="cargos.php">
-              <i class="bi bi-card-list"></i>
-              Cargos
+            <a class="nav-link" href="../controllers/vendas.php">
+              <i class="bi bi-cart"></i>
+              Vendas
             </a>
-            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalExemplo">
-              <i class="bi bi-file-earmark-text"></i>
-              Rel de Orçamento
+            <a class="nav-link" href="../controllers/pagamentos.php">
+              <i class="bi bi-credit-card"></i>
+              Pagamentos
             </a>
-            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalOS">
-              <i class="bi bi-file-earmark-text"></i>
-              Rel de OS
-            </a>
-            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalRelMov">
-              <i class="bi bi-file-earmark-text"></i>
-              Rel Financeiro
-            </a>
-            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalRelGastos">
-              <i class="bi bi-file-earmark-text"></i>
-              Rel de Gastos
-            </a>
-            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalRelCompras">
-              <i class="bi bi-file-earmark-text"></i>
-              Rel de Compras
-            </a>
-            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalRelPagamentos">
-              <i class="bi bi-file-earmark-text"></i>
-              Rel de Pagamentos
+            <a class="nav-link" href="../controllers/compras.php">
+              <i class="bi bi-bag-check"></i>
+              Compras
             </a>
           </nav>
         </div>
@@ -169,13 +150,10 @@ if ($_SESSION['cargo_usuario'] != 'Administrador' && $_SESSION['cargo_usuario'] 
 
               <!-- Title -->
               <div class="d-flex align-items-center">
-                <?php if ($_SESSION['cargo_usuario'] == 'Gerente') { ?>
-                  <h2 class="mb-0 me-2">Gerente</h2>
+                <h2 class="mb-0 me-2">Tesoureiro(a)</h2>
+                <?php if ($_SESSION['cargo_usuario'] != 'Administrador' && $_SESSION['cargo_usuario'] != 'Gerente'): ?>
                   <span class="user-name"><?php echo $_SESSION['nome_usuario']; ?></span>
-                <?php } else { ?>
-                  <h2 class="mb-0 me-2">Administrador(a)</h2>
-                  <span class="user-name"><?php echo $_SESSION['nome_usuario']; ?></span>
-                <?php } ?>
+                <?php endif; ?>
               </div>
 
               <!-- Options Dropdown -->
@@ -186,15 +164,17 @@ if ($_SESSION['cargo_usuario'] != 'Administrador' && $_SESSION['cargo_usuario'] 
                 </button>
 
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="optionsDropdown">
-                  <li><a class="dropdown-item" href="painel_tesouraria.php">
-                      <i class="bi bi-cash-stack me-2"></i>Painel Financeiro
-                    </a></li>
-                  <li><a class="dropdown-item" href="painel_funcionario.php">
-                      <i class="bi bi-people me-2"></i>Painel Funcionário
-                    </a></li>
-                  <li>
-                    <hr class="dropdown-divider">
-                  </li>
+                  <?php if ($_SESSION['cargo_usuario'] == 'Administrador' || $_SESSION['cargo_usuario'] == 'Gerente'): ?>
+                    <li><a class="dropdown-item" href="../views/painel_funcionario.php">
+                        <i class="bi bi-people me-2"></i>Painel Funcionário
+                      </a></li>
+                    <li><a class="dropdown-item" href="../views/painel_admin.php">
+                        <i class="bi bi-shield-check me-2"></i>Painel Administrador
+                      </a></li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                  <?php endif; ?>
                   <li><a class="dropdown-item text-danger" href="index.php">
                       <i class="bi bi-box-arrow-right me-2"></i>Sair
                     </a></li>
@@ -446,213 +426,6 @@ if ($_SESSION['cargo_usuario'] != 'Administrador' && $_SESSION['cargo_usuario'] 
 
   <!-- Mobile sidebar backdrop -->
   <div class="sidebar-backdrop d-lg-none" id="sidebarBackdrop" style="display: none;"></div>
-
-  <!-- Modal Orçamento -->
-  <div id="modalExemplo" class="modal fade" tabindex="-1">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Relatório de Orçamentos</h4>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form method="POST" action="rel/rel_orcamentos_data_class.php">
-            <div class="row mb-3">
-              <div class="col-sm-4">
-                <label class="form-label">Status</label>
-                <select class="form-select" name="status">
-                  <option value="Todos">Todos</option>
-                  <option value="Aberto">Aberto</option>
-                  <option value="Aguardando">Aguardando</option>
-                  <option value="Aprovado">Aprovado</option>
-                  <option value="Cancelado">Cancelado</option>
-                </select>
-              </div>
-              <div class="col-sm-4">
-                <label class="form-label">Data Inicial</label>
-                <input name="txtdataInicial" class="form-control" type="date">
-              </div>
-              <div class="col-sm-4">
-                <label class="form-label">Data Final</label>
-                <input name="txtdataFinal" class="form-control" type="date">
-              </div>
-            </div>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-success" name="buttonPesquisar">Gerar</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal OS -->
-  <div id="modalOS" class="modal fade" tabindex="-1">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Relatório de Ordem de Serviços</h4>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form method="POST" action="rel/rel_os_data_class.php">
-            <div class="row mb-3">
-              <div class="col-sm-4">
-                <label class="form-label">Status</label>
-                <select class="form-select" name="status">
-                  <option value="Todos">Todos</option>
-                  <option value="Aberta">Aberta</option>
-                  <option value="Fechada">Fechada</option>
-                  <option value="Cancelada">Cancelada</option>
-                </select>
-              </div>
-              <div class="col-sm-4">
-                <label class="form-label">Data Inicial</label>
-                <input name="txtdataInicial" class="form-control" type="date">
-              </div>
-              <div class="col-sm-4">
-                <label class="form-label">Data Final</label>
-                <input name="txtdataFinal" class="form-control" type="date">
-              </div>
-            </div>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-success" name="buttonPesquisar">Gerar</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal Rel Gastos -->
-  <div id="modalRelGastos" class="modal fade" tabindex="-1">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Relatório de Gastos</h4>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form method="POST" action="rel/rel_gastos_data_class.php">
-            <div class="row mb-3">
-              <div class="col-sm-6">
-                <label class="form-label">Data Inicial</label>
-                <input name="txtdataInicial" class="form-control" type="date">
-              </div>
-              <div class="col-sm-6">
-                <label class="form-label">Data Final</label>
-                <input name="txtdataFinal" class="form-control" type="date">
-              </div>
-            </div>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-success" name="buttonPesquisar">Gerar</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal Rel Compras -->
-  <div id="modalRelCompras" class="modal fade" tabindex="-1">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Relatório de Compras</h4>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form method="POST" action="rel/rel_compras_data_class.php">
-            <div class="row mb-3">
-              <div class="col-sm-6">
-                <label class="form-label">Data Inicial</label>
-                <input name="txtdataInicial" class="form-control" type="date">
-              </div>
-              <div class="col-sm-6">
-                <label class="form-label">Data Final</label>
-                <input name="txtdataFinal" class="form-control" type="date">
-              </div>
-            </div>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-success" name="buttonPesquisar">Gerar</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal Rel Pagamentos -->
-  <div id="modalRelPagamentos" class="modal fade" tabindex="-1">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Relatório de Pagamentos</h4>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form method="POST" action="rel/rel_pagamentos_data_class.php">
-            <div class="row mb-3">
-              <div class="col-sm-6">
-                <label class="form-label">Data Inicial</label>
-                <input name="txtdataInicial" class="form-control" type="date">
-              </div>
-              <div class="col-sm-6">
-                <label class="form-label">Data Final</label>
-                <input name="txtdataFinal" class="form-control" type="date">
-              </div>
-            </div>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-success" name="buttonPesquisar">Gerar</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal Movimentações -->
-  <div id="modalRelMov" class="modal fade" tabindex="-1">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Relatório de Movimentações</h4>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form method="POST" action="rel/rel_mov_data_class.php">
-            <div class="row mb-3">
-              <div class="col-sm-4">
-                <label class="form-label">Tipo</label>
-                <select class="form-select" name="tipo">
-                  <option value="Todas">Todas</option>
-                  <option value="Entrada">Entradas</option>
-                  <option value="Saida">Saídas</option>
-                </select>
-              </div>
-              <div class="col-sm-4">
-                <label class="form-label">Data Inicial</label>
-                <input name="txtdataInicial" class="form-control" type="date">
-              </div>
-              <div class="col-sm-4">
-                <label class="form-label">Data Final</label>
-                <input name="txtdataFinal" class="form-control" type="date">
-              </div>
-            </div>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-success" name="buttonPesquisar">Gerar</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>

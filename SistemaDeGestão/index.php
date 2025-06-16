@@ -15,13 +15,13 @@ if (isset($_SESSION['login_erro']) && $_SESSION['login_erro'] === true) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="cssLogin.css">
+  <link rel="stylesheet" href="assets/cssLogin.css">
   <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css">
   <title>Login</title>
 </head>
 
 <body>
-  <form action="login.php" method="post">
+  <form action="controllers/login.php" method="post">
     <section class="login">
       <div class="formulario">
         <h2>

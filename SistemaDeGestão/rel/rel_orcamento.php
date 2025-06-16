@@ -1,6 +1,6 @@
 <?php 
 $id = $_GET['id'];
-include('../conexao.php');
+include('../config/conexao.php');
 
 $query = "SELECT o.*, c.nome AS cli_nome, c.email, c.telefone, c.endereco, f.nome AS func_nome 
 FROM orcamentos AS o 

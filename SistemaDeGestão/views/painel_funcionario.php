@@ -1,7 +1,7 @@
 <?php 
 session_start();
-include('verificar_login.php');
-include('conexao.php');
+include('../controllers/verificar_login.php');
+include('../config/conexao.php');
 
 if($_SESSION['cargo_usuario'] != 'Funcionario' && $_SESSION['cargo_usuario'] != 'Gerente' && $_SESSION['cargo_usuario'] != 'Administrador'){
     header('Location: index.php');
@@ -170,27 +170,27 @@ if($_SESSION['cargo_usuario'] != 'Funcionario' && $_SESSION['cargo_usuario'] != 
           </div>
 
           <nav class="nav flex-column">
-            <a class="nav-link" href="clientes.php">
+            <a class="nav-link" href="../controllers/clientes.php">
               <i class="bi bi-people"></i>
               Clientes
             </a>
-            <a class="nav-link" href="abrir_orcamentos.php">
+            <a class="nav-link" href="../controllers/abrir_orcamentos.php">
               <i class="bi bi-cash-stack"></i>
               Abrir Orçamento
             </a>
-            <a class="nav-link" href="fechar_orcamentos.php">
+            <a class="nav-link" href="../controllers/fechar_orcamentos.php">
               <i class="bi bi-box"></i>
               Fechar Orçamento
             </a>
-            <a class="nav-link" href="rel_orcamentos.php">
+            <a class="nav-link" href="../controllers/rel_orcamentos.php">
               <i class="bi bi-file-earmark-text"></i>
               Relatório Orçamento
             </a>
-            <a class="nav-link" href="os_abertas.php">
+            <a class="nav-link" href="../controllers/os_abertas.php">
               <i class="bi bi-bar-chart"></i>
               OS Abertos
             </a>
-            <a class="nav-link" href="consultar_os.php">
+            <a class="nav-link" href="../controllers/consultar_os.php">
               <i class="bi bi-question-circle"></i>
               Consultar OS
             </a>
@@ -226,10 +226,10 @@ if($_SESSION['cargo_usuario'] != 'Funcionario' && $_SESSION['cargo_usuario'] != 
 
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="optionsDropdown">
                   <?php if ($_SESSION['cargo_usuario'] == 'Administrador' || $_SESSION['cargo_usuario'] == 'Gerente'): ?>
-                    <li><a class="dropdown-item" href="painel_tesouraria.php">
+                    <li><a class="dropdown-item" href="../views/painel_tesouraria.php">
                         <i class="bi bi-cash me-2"></i>Painel Financeiro
                       </a></li>
-                    <li><a class="dropdown-item" href="painel_admin.php">
+                    <li><a class="dropdown-item" href="../views/painel_admin.php">
                         <i class="bi bi-shield-check me-2"></i>Painel Administrador
                       </a></li>
                     <li>

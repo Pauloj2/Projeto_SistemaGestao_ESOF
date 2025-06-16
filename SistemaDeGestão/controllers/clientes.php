@@ -1,6 +1,6 @@
 <?php
 // Conectamos ao banco de dados onde os clientes são salvos
-include('conexao.php');
+include('../config/conexao.php');
 
 //  CADASTRAR CLIENTE
 if (isset($_POST['button'])) { // Se o botão de salvar foi apertado
@@ -37,7 +37,7 @@ if (isset($_GET['func']) && $_GET['func'] == 'deleta') { // Se o usuário clicou
     echo "<script>alert('Cliente Excluído'); window.location.href = 'clientes.php';</script>"; // Avisamos
 }
 
-// ✏️ EDITAR CLIENTE
+//  EDITAR CLIENTE
 if (isset($_POST['button_editar'])) { // Se clicou no botão de editar
     $id = $_POST['id_cliente']; // Pegamos o ID do cliente
     $nome = $_POST['txtnome_edit']; // Pegamos os novos dados preenchidos
@@ -69,7 +69,7 @@ if (isset($_POST['button_editar'])) { // Se clicou no botão de editar
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Faz o site funcionar bem no celular -->
     
     <!-- Arquivo de estilos CSS para deixar a página bonita -->
-    <link rel="stylesheet" href="cssClientes.css">
+    <link rel="stylesheet" href="../assets/cssClientes.css">
 
     <!-- Ícones prontos (como lápis, lixeira, lupa...) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -88,7 +88,7 @@ if (isset($_POST['button_editar'])) { // Se clicou no botão de editar
 <header>
     <div class="voltar">
         <!-- Botão para voltar para a tela anterior -->
-        <a href="painel_funcionario.php">
+        <a href="../views/painel_funcionario.php">
             <i class="fa-solid fa-arrow-left"></i> <!-- Ícone de seta para trás -->
         </a>
     </div>

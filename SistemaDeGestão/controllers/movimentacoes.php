@@ -1,5 +1,5 @@
 <?php
-include('conexao.php');
+include('../config/conexao.php');
 
 // Definir filtros com valores padrão
 $dataInicial = $_GET['dataInicial'] ?? date('Y-m-d');
@@ -49,7 +49,7 @@ $saldo = $totalEntradas - $totalSaidas;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Movimentações</title>
-    <link rel="stylesheet" href="cssClientes.css" />
+    <link rel="stylesheet" href="../assets/cssClientes.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
@@ -59,7 +59,7 @@ $saldo = $totalEntradas - $totalSaidas;
 <body>
     <header>
         <div class="voltar">
-            <a href="painel_tesouraria.php"><i class="fa-solid fa-arrow-left"></i></a>
+            <a href="../views/painel_tesouraria.php"><i class="fa-solid fa-arrow-left"></i></a>
         </div>
         <div class="pesquisar">
             <form class="campo-pesquisa" method="GET">

@@ -1,6 +1,6 @@
 <?php
 // Conectamos ao banco de dados onde os funcionarios são salvos
-include('conexao.php');
+include('../config/conexao.php');
 
 //  CADASTRAR Funcionario
 if (isset($_POST['button'])) { // Se o botão de salvar foi apertado
@@ -67,7 +67,7 @@ if (isset($_POST['button_editar'])) { // Se clicou no botão de editar
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Faz o site funcionar bem no celular -->
 
     <!-- Arquivo de estilos CSS para deixar a página bonita -->
-    <link rel="stylesheet" href="cssClientes.css">
+    <link rel="stylesheet" href="../assets/cssClientes.css">
 
     <!-- Ícones prontos (como lápis, lixeira, lupa...) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -87,7 +87,7 @@ if (isset($_POST['button_editar'])) { // Se clicou no botão de editar
     <header>
         <div class="voltar">
             <!-- Botão para voltar para a tela anterior -->
-            <a href="painel_admin.php">
+            <a href="../views/painel_admin.php">
                 <i class="fa-solid fa-arrow-left"></i> <!-- Ícone de seta para trás -->
             </a>
         </div>

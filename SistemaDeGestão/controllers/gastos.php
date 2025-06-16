@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('conexao.php');
+include('../config/conexao.php');
 
 // CADASTRAR Gasto
 if (isset($_POST['button'])) {
@@ -56,7 +56,7 @@ if (isset($_POST['button_editar'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="cssClientes.css">
+    <link rel="stylesheet" href="../assets/cssClientes.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
@@ -66,7 +66,7 @@ if (isset($_POST['button_editar'])) {
 <body>
     <header>
         <div class="voltar">
-            <a href="painel_tesouraria.php">
+            <a href="../views/painel_tesouraria.php">
                 <i class="fa-solid fa-arrow-left"></i>
             </a>
         </div>
