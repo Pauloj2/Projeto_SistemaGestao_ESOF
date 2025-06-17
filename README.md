@@ -17,28 +17,31 @@ Este é um sistema web desenvolvido para o gerenciamento de clientes, orçamento
 ## 📁 Estrutura do Projeto
 
 ```
-SistemaDeGestão/
-├── abrir_orcamentos.php
-├── cargos.php
-├── clientes.php
-├── compras.php
-├── conexao.php
-├── consultar_os.php
-├── cssClientes.css
-├── cssLogin.css
-├── cssPainelFunc.css
-├── fechar_orcamentos.php
-├── funcionarios.php
-├── gastos.php
-├── index.php
-├── login.php
-├── logout.php
-├── movimentacoes.php
-├── os_abertas.php
-├── pagamentos.php
-├── painel_admin.php
-├── painel_funcionario.php
+SistemaDeGestao/
+assets/
+css/
+img/
+config/
+conexao.php
+controllers/
+(lógica de negócio: orçamentos, clientes, usuários, etc)
+views/
+(interfaces: painéis, login, telas do sistema)
+rel/
+(relatórios)
+vendor/
+(bibliotecas de terceiros, ex: dompdf)
+README.md
 ```
+## ⚙️ Tecnologias Utilizadas
+
+- **PHP** (backend)
+- **MySQL** (banco de dados)
+- **HTML5 & CSS3** (frontend)
+- **Bootstrap** (estilização responsiva)
+- **JavaScript / jQuery** (interatividade)
+- **Dompdf** (geração de PDFs)
+- **FontAwesome & Bootstrap Icons** (ícones)
 
 ## 🧪 Requisitos
 
@@ -75,4 +78,4 @@ SistemaDeGestão/
 
 ## 📃 Licença
 
-Este projeto é de uso acadêmico ou interno. Modificações são permitidas conforme as necessidades da empresa ou do curso.
+Este projeto é de uso acadêmico. 
