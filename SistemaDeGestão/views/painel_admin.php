@@ -457,7 +457,7 @@ if ($_SESSION['cargo_usuario'] != 'Administrador' && $_SESSION['cargo_usuario'] 
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form method="POST" action="rel/rel_orcamentos_data_class.php">
+          <form method="POST" action="../rel/rel_orcamentos_data_class.php">
             <div class="row mb-3">
               <div class="col-sm-4">
                 <label class="form-label">Status</label>
@@ -497,7 +497,7 @@ if ($_SESSION['cargo_usuario'] != 'Administrador' && $_SESSION['cargo_usuario'] 
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form method="POST" action="rel/rel_os_data_class.php">
+          <form method="POST" action="../rel/rel_os_data_class.php">
             <div class="row mb-3">
               <div class="col-sm-4">
                 <label class="form-label">Status</label>
@@ -536,7 +536,7 @@ if ($_SESSION['cargo_usuario'] != 'Administrador' && $_SESSION['cargo_usuario'] 
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form method="POST" action="rel/rel_gastos_data_class.php">
+          <form method="POST" action="../rel/rel_gastos_data_class.php">
             <div class="row mb-3">
               <div class="col-sm-6">
                 <label class="form-label">Data Inicial</label>
@@ -566,7 +566,7 @@ if ($_SESSION['cargo_usuario'] != 'Administrador' && $_SESSION['cargo_usuario'] 
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form method="POST" action="rel/rel_compras_data_class.php">
+          <form method="POST" action="../rel/rel_compras_data_class.php">
             <div class="row mb-3">
               <div class="col-sm-6">
                 <label class="form-label">Data Inicial</label>
@@ -596,7 +596,7 @@ if ($_SESSION['cargo_usuario'] != 'Administrador' && $_SESSION['cargo_usuario'] 
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form method="POST" action="rel/rel_pagamentos_data_class.php">
+          <form method="POST" action="../rel/rel_pagamentos_data_class.php">
             <div class="row mb-3">
               <div class="col-sm-6">
                 <label class="form-label">Data Inicial</label>
@@ -626,7 +626,7 @@ if ($_SESSION['cargo_usuario'] != 'Administrador' && $_SESSION['cargo_usuario'] 
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form method="POST" action="rel/rel_mov_data_class.php">
+          <form method="POST" action="../rel/rel_mov_data_class.php">
             <div class="row mb-3">
               <div class="col-sm-4">
                 <label class="form-label">Tipo</label>
