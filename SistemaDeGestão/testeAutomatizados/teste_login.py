@@ -24,7 +24,7 @@ testes = [
 for i, teste in enumerate(testes, start=1):
     print(f"Executando Teste T{i}...")
 
-    driver.get("http://localhost/sistema_esof/index.php")
+    driver.get("http://localhost/sistema_esofOrganizado/index.php")
     time.sleep(1)
 
     campo_usuario = driver.find_element(By.NAME, "usuario")

@@ -4,7 +4,7 @@ include('../controllers/verificar_login.php');
 include('../config/conexao.php');
 
 if ($_SESSION['cargo_usuario'] != 'Administrador' && $_SESSION['cargo_usuario'] != 'Gerente') {
-  header('Location: index.php');
+  header('Location: ../index.php');
   exit();
 }
 ?>
@@ -130,28 +130,29 @@ if ($_SESSION['cargo_usuario'] != 'Administrador' && $_SESSION['cargo_usuario'] 
             </a>
             <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalExemplo">
               <i class="bi bi-file-earmark-text"></i>
-              Rel de Orçamento
+              Relatório de Orçamento
             </a>
             <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalOS">
               <i class="bi bi-file-earmark-text"></i>
-              Rel de OS
+              Relatório de Ordem de Serviço
             </a>
             <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalRelMov">
               <i class="bi bi-file-earmark-text"></i>
-              Rel Financeiro
+              Relatório do Financeiro
             </a>
             <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalRelGastos">
               <i class="bi bi-file-earmark-text"></i>
-              Rel de Gastos
+              Relatório de Gastos
             </a>
             <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalRelCompras">
               <i class="bi bi-file-earmark-text"></i>
-              Rel de Compras
+              Relatório de Compras
             </a>
             <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalRelPagamentos">
               <i class="bi bi-file-earmark-text"></i>
-              Rel de Pagamentos
+              Relatório de Pagamentos
             </a>
+
           </nav>
         </div>
       </div>
@@ -195,9 +196,12 @@ if ($_SESSION['cargo_usuario'] != 'Administrador' && $_SESSION['cargo_usuario'] 
                   <li>
                     <hr class="dropdown-divider">
                   </li>
-                  <li><a class="dropdown-item text-danger" href="index.php">
+                  <li>
+                    <a class="dropdown-item text-danger" href="../index.php">
                       <i class="bi bi-box-arrow-right me-2"></i>Sair
-                    </a></li>
+                    </a>
+                  </li>
+
                 </ul>
               </div>
             </div>
@@ -287,7 +291,7 @@ if ($_SESSION['cargo_usuario'] != 'Administrador' && $_SESSION['cargo_usuario'] 
                   </div>
                 </div>
               </div>
-              
+
               <!-- Gastos -->
               <div class="col-lg-3 col-md-6">
                 <div class="card text-dark bg-success-subtle">

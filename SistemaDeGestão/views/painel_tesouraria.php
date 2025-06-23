@@ -4,7 +4,7 @@ include('../controllers/verificar_login.php');
 include('../config/conexao.php');
 
 if ($_SESSION['cargo_usuario'] != 'Administrador' && $_SESSION['cargo_usuario'] != 'Gerente' && $_SESSION['cargo_usuario'] != 'Tesoureiro') {
-  header('Location: index.php');
+  header('Location: ../index.php');
   exit();
 }
 ?>
@@ -175,7 +175,7 @@ if ($_SESSION['cargo_usuario'] != 'Administrador' && $_SESSION['cargo_usuario'] 
                       <hr class="dropdown-divider">
                     </li>
                   <?php endif; ?>
-                  <li><a class="dropdown-item text-danger" href="index.php">
+                  <li><a class="dropdown-item text-danger" href="../index.php">
                       <i class="bi bi-box-arrow-right me-2"></i>Sair
                     </a></li>
                 </ul>

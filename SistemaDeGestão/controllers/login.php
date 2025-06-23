@@ -15,7 +15,7 @@ mysqli_query($conexao, $query_cancelar);
 
 
 if (!isset($_POST['usuario']) || !isset($_POST['senha'])) {
-    header('Location: index.php');
+    header('Location: ../index.php');
     exit();
 }
 
@@ -53,6 +53,6 @@ if ($row > 0) {
     exit();
 } else {
     $_SESSION['login_erro'] = true;
-    header('Location: index.php');
+    header('Location: ../index.php');
     exit();
 }

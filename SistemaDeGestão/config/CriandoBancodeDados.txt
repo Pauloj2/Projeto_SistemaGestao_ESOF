@@ -1,0 +1,148 @@
+-- Criação do banco de dados
+CREATE DATABASE IF NOT EXISTS eletroservice DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE eletroservice;
+
+-- Tabela: cargos
+CREATE TABLE `cargos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `cargo` varchar(30) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Tabela: clientes
+CREATE TABLE `clientes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(20) NOT NULL,
+  `telefone` varchar(15) NOT NULL,
+  `endereco` varchar(25) NOT NULL,
+  `email` varchar(40) NOT NULL,
+  `cpf` varchar(20) NOT NULL,
+  `data` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Tabela: compras
+CREATE TABLE `compras` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `valor` decimal(10,2) NOT NULL,
+  `peca` varchar(50) NOT NULL,
+  `funcionario` varchar(50) NOT NULL,
+  `data` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Tabela: funcionarios
+CREATE TABLE `funcionarios` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(40) NOT NULL,
+  `cpf` varchar(18) NOT NULL,
+  `telefone` varchar(15) NOT NULL,
+  `endereco` varchar(40) NOT NULL,
+  `cargo` varchar(20) NOT NULL,
+  `data` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Tabela: gastos
+CREATE TABLE `gastos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `valor` decimal(10,2) NOT NULL,
+  `motivo` varchar(250) NOT NULL,
+  `funcionario` varchar(50) NOT NULL,
+  `data` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Tabela: movimentacoes
+CREATE TABLE `movimentacoes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tipo` varchar(20) NOT NULL,
+  `movimento` varchar(20) NOT NULL,
+  `valor` decimal(10,2) NOT NULL,
+  `funcionario` varchar(40) NOT NULL,
+  `data` date NOT NULL,
+  `id_movimento` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Tabela: orcamentos
+CREATE TABLE `orcamentos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `cliente` varchar(25) NOT NULL,
+  `tecnico` varchar(25) NOT NULL,
+  `produto` varchar(25) NOT NULL,
+  `serie` varchar(30),
+  `problema` varchar(255) NOT NULL,
+  `laudo` varchar(255),
+  `obs` varchar(255),
+  `valor_servico` decimal(10,2),
+  `pecas` varchar(255),
+  `valor_pecas` decimal(10,2),
+  `total` decimal(10,2),
+  `desconto` decimal(10,2),
+  `valor_total` decimal(10,2),
+  `pgto` varchar(20),
+  `data_abertura` date NOT NULL,
+  `data_geracao` date,
+  `data_aprovacao` date,
+  `status` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Tabela: os
+CREATE TABLE `os` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_orc` int(11) NOT NULL,
+  `cliente` varchar(30) NOT NULL,
+  `produto` varchar(25) NOT NULL,
+  `tecnico` varchar(25) NOT NULL,
+  `total` decimal(10,2) NOT NULL,
+  `data_abertura` date NOT NULL,
+  `data_fechamento` date,
+  `garantia` varchar(10),
+  `status` varchar(15) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Tabela: pagamentos
+CREATE TABLE `pagamentos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `valor` decimal(10,2) NOT NULL,
+  `funcionario` varchar(40) NOT NULL,
+  `tesoureiro` varchar(40) NOT NULL,
+  `data` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Tabela: produtos
+CREATE TABLE `produtos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `produto` varchar(25) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Tabela: usuarios
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(30) NOT NULL,
+  `usuario` varchar(30) NOT NULL,
+  `senha` varchar(20) NOT NULL,
+  `cargo` varchar(25) NOT NULL,
+  `id_funcionario` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Tabela: vendas
+CREATE TABLE `vendas` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `valor` decimal(10,2) NOT NULL,
+  `produto` varchar(50) NOT NULL,
+  `funcionario` varchar(50) NOT NULL,
+  `data` date NOT NULL,
+  `status` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Inserção do único usuário padrão:
+INSERT INTO `usuarios` (`id`, `nome`, `usuario`, `senha`, `cargo`, `id_funcionario`) VALUES
+(1, 'Administrador', 'admin', '123', 'Administrador', 0);

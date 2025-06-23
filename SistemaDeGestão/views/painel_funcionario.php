@@ -4,7 +4,7 @@ include('../controllers/verificar_login.php');
 include('../config/conexao.php');
 
 if($_SESSION['cargo_usuario'] != 'Funcionario' && $_SESSION['cargo_usuario'] != 'Gerente' && $_SESSION['cargo_usuario'] != 'Administrador'){
-    header('Location: index.php');
+    header('Location: ../index.php');
     exit();
 }
 ?>
@@ -188,11 +188,11 @@ if($_SESSION['cargo_usuario'] != 'Funcionario' && $_SESSION['cargo_usuario'] != 
             </a>
             <a class="nav-link" href="../controllers/os_abertas.php">
               <i class="bi bi-bar-chart"></i>
-              OS Abertos
+              Ordens de Serviço Abertas
             </a>
             <a class="nav-link" href="../controllers/consultar_os.php">
               <i class="bi bi-question-circle"></i>
-              Consultar OS
+              Consultar Ordens de Serviço
             </a>
           </nav>
         </div>
@@ -236,7 +236,7 @@ if($_SESSION['cargo_usuario'] != 'Funcionario' && $_SESSION['cargo_usuario'] != 
                       <hr class="dropdown-divider">
                     </li>
                   <?php endif; ?>
-                  <li><a class="dropdown-item text-danger" href="index.php">
+                  <li><a class="dropdown-item text-danger" href="../index.php">
                       <i class="bi bi-box-arrow-right me-2"></i>Sair
                     </a></li>
                 </ul>

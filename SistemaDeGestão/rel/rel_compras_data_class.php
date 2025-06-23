@@ -15,7 +15,7 @@ include '../rel/rel_compras_data.php';
 $html = ob_get_clean();
 
 $pdf = new Dompdf();
-$pdf->set_option('isRemoteEnabled', true); // se tiver imagens externas
+$pdf->set_option('isRemoteEnabled', true); 
 $pdf->setPaper('A4', 'portrait');
 $pdf->loadHtml($html);
 $pdf->render();
