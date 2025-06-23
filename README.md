@@ -1,5 +1,8 @@
 
-# 📊 Sistema de Gestão - EletroService
+![Gemini_Generated_Image_95ze2b95ze2b95ze](https://github.com/user-attachments/assets/88ea28e9-96b0-4342-b81b-c77fd333b59d)
+
+
+# Sistema de Gestão - EletroService
 
 Este é um sistema web desenvolvido para o gerenciamento de clientes, orçamentos, funcionários, compras, pagamentos e movimentações financeiras de uma empresa de conserto de eletrodomésticos.
 
